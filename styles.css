@@ -1,0 +1,110 @@
+/* Penvar - one page site
+   Identity: wordmark direction 1a. Ink is the only brand colour.
+   No gradients, shadows, or images anywhere by design. */
+
+:root{
+  --ink:#16232E;
+  --paper:#F6F5F2;
+  --rule:#DEDBD4;
+  --body:#22303C;
+  --label:#5F6A74;
+  --number:#9AA1A8;
+  --measure:66ch;
+  --pad:clamp(22px,5vw,56px);
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --sans:'Public Sans',Helvetica,Arial,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 var(--pad)}
+
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(22,35,46,.35)}
+a:hover{border-bottom-color:var(--ink)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-bottom-color:transparent}
+
+/* Identity */
+.identity{display:flex;flex-direction:column;gap:6px}
+.wordmark{font:600 30px/1 var(--serif);letter-spacing:.004em;color:var(--ink)}
+.descriptor{font:600 8.5px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--label)}
+
+/* Header */
+.site-head{border-bottom:1px solid var(--rule)}
+.head-inner{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 32px;padding-top:26px;padding-bottom:26px}
+.head-link{font:500 11.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding-bottom:3px;border-bottom:1px solid var(--ink)}
+
+/* Opening statement */
+.lede{padding:clamp(72px,11vw,132px) 0 clamp(56px,8vw,96px)}
+h1{
+  margin:0;
+  max-width:24ch;
+  font:600 clamp(31px,4.6vw,50px)/1.16 var(--serif);
+  letter-spacing:-.008em;
+  text-wrap:pretty;
+}
+.datum{display:flex;align-items:flex-end;height:26px;margin-top:clamp(40px,6vw,64px)}
+.datum-block{width:132px;height:9px;background:var(--ink)}
+.datum-line{flex:1 1 auto;height:2px;background:var(--ink)}
+
+/* Sections */
+.row{
+  display:grid;
+  grid-template-columns:200px minmax(0,1fr);
+  gap:64px;
+  align-items:start;
+  border-top:1px solid var(--rule);
+  padding:clamp(44px,6vw,68px) 0;
+  scroll-margin-top:24px;
+}
+.row-last{padding-bottom:clamp(60px,8vw,92px)}
+.label{
+  margin:0;
+  display:flex;
+  gap:12px;
+  padding-top:7px;
+  font:600 10.5px/1.5 var(--sans);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--label);
+}
+.label .num{color:var(--number)}
+.col{display:flex;flex-direction:column;gap:24px;max-width:var(--measure)}
+.col p{margin:0;font:400 clamp(17px,1.5vw,19px)/1.72 var(--sans);color:var(--body);text-wrap:pretty}
+.email{align-self:flex-start;font:600 clamp(21px,2.4vw,27px)/1.3 var(--serif);padding-bottom:5px}
+
+/* Footer */
+.site-foot{background:var(--ink);color:var(--paper)}
+.foot-inner{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:26px 64px;padding-top:38px;padding-bottom:46px}
+.wordmark-foot{font-size:21px;color:var(--paper)}
+.descriptor-foot{color:rgba(246,245,242,.55)}
+.legal{margin:0;max-width:56ch;font:400 13px/1.65 var(--sans);color:rgba(246,245,242,.72)}
+.pending{color:rgba(246,245,242,.5)}
+
+/* Narrow widths: label sits above its section */
+@media (max-width:760px){
+  .row{grid-template-columns:1fr;gap:22px}
+  .label{padding-top:0}
+}
+
+/* Print: one colour, no chrome */
+@media print{
+  body{background:#fff}
+  .site-head,.row{border-color:#ccc}
+  .site-foot{background:#fff;color:#000}
+  .wordmark-foot{color:#000}
+  .descriptor-foot,.legal,.pending{color:#333}
+  .head-link{display:none}
+  a{border-bottom:none}
+}
