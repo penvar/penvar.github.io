@@ -14,5 +14,5 @@ Static one page site. Plain HTML and CSS, no framework, no build, no JavaScript.
 
 ## Outstanding
 
-- Footer company number is a placeholder.
 - Fonts load from Google Fonts. Self-hosting them is the one improvement worth making.
+- Registered office address is deliberately not shown on the site (Craig's call, 19 Aug 2026), though UK trading disclosure rules technically expect it alongside the company number.
